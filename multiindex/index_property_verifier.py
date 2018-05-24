@@ -11,7 +11,7 @@ class MultiIndexVisitor(object, metaclass=ABCMeta):
 
 class MultiIndexInserter(object):
     def visit(self, index, obj):
-        index_val = getattr(obj, index.index)
+        index_val = getattr(obj, index.index_name)
         if isinstance(index, (OrderedUnique, HashedUnique)):
             # not unique, don't insert
             if index.get(index_val) is not None:
@@ -23,30 +23,15 @@ class MultiIndexModifier(object):
     def visit(self, index, obj):
         if isinstance(index, (OrderedUnique, HashedUnique)):
             # not unique, don't insert
-            new_index_val = getattr(obj, index.index)
+            new_index_val = getattr(obj, index.index_name)
             if index.get(new_index_val):
                 return False
-
         return True
-    # def visit(self, index, indexed_by, value, obj):
-    #     if index.index == indexed_by:
-    #         current_index_val = index.get(value)
-    #         if not current_index_val:
-    #             return False
-    #
-    #     if isinstance(index, (OrderedUnique, HashedUnique)):
-    #         # not unique, don't insert
-    #         current_index_val = index.get(value)
-    #         new_index_val = getattr(obj, index.index)
-    #         if current_index_val == new_index_val:
-    #             return False
-    #
-    #     return True
 
 
 class MultiIndexDeleter(object):
     def visit(self, index, obj):
-        index_val = getattr(obj, index.index)
+        index_val = getattr(obj, index.index_name)
         if index.get(index_val):
             return index_val
         return None
