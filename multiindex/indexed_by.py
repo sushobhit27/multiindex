@@ -11,7 +11,7 @@ class IndexedBy(object, metaclass=ABCMeta):
         return self.view.get(value)
 
     def modify(self, value, obj):
-        return self.view.modify(value, obj)
+        return self.view.modify(value, getattr(obj, self.index_name), obj)
 
     def remove(self, value):
         return self.view.remove(value)

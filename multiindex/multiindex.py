@@ -1,3 +1,5 @@
+import copy
+
 from .index_property_verifier import (MultiIndexInserter,
                                       MultiIndexModifier,
                                       MultiIndexDeleter)
@@ -28,12 +30,13 @@ class MultiIndexContainer(object):
 
         if isinstance(old_obj, (list, tuple)):
             old_obj = old_obj[0]
-        obj = old_obj
+        obj = copy.copy(old_obj)
         setattr(obj, indexed_by, new_value)
         can_be_modified = [index.can_be_modified(modifier, obj) for index in self.indexes.values()
                            if index.index_name == indexed_by]
         if all(can_be_modified):
-            [index.modify(getattr(old_obj, index.index_name), obj) for index in self.indexes.values()]
+            [index.modify(getattr(old_obj, index.index_name), obj)
+             for index in self.indexes.values()]
 
     def remove(self, indexed_by, value):
         # insert must only insert the obj only when every index property is satisfied.

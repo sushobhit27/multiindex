@@ -35,7 +35,6 @@ def mi(emp_seq):
 
 
 def test_insert(mi, emp_seq):
-
     assert emp_seq[3] == mi.get('first_name', 'Shawn')
     assert emp_seq[0] == mi.get('emp_id', 786)
     assert mi.get('emp_id', 321) is None
@@ -49,6 +48,7 @@ def test_modify(mi):
     assert mi.get('emp_id', 666).first_name == 'Steve'
     assert mi.get('emp_id', 666).last_name == 'Austin'
     assert mi.get('first_name', 'Steve').emp_id == 666
+    assert mi.get('last_name', 'Austin').emp_id == 666
 
 
 def test_remove(mi):

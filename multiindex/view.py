@@ -12,7 +12,7 @@ class View(object, metaclass=ABCMeta):
         pass
 
     @abstractmethod
-    def modify(self, k, v):
+    def modify(self, old_key, new_key, v):
         pass
 
     @abstractmethod
@@ -27,8 +27,9 @@ class Unique(View, metaclass=ABCMeta):
     def get(self, k):
         return self._container.get(k)
 
-    def modify(self, k, v):
-        self._container[k] = v
+    def modify(self, old_key, new_key, v):
+        del self._container[old_key]
+        self._container[new_key] = v
 
     def remove(self, k):
         del self._container[k]
@@ -54,10 +55,10 @@ class HashedNonUnique(View):
     def get(self, k):
         return self._container.get(k)
 
-    def modify(self, k, v):
-        if k in self._container:
-            self._container[k].pop(0)
-            self._container[k].append(v)
+    def modify(self, old_key, new_key, v):
+        if old_key in self._container:
+                self._container[old_key].pop(0)
+                self._container[new_key].append(v)
 
     def remove(self, k):
         if k in self._container:
