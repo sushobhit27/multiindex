@@ -50,8 +50,8 @@ def test_insert(mi, potus_seq):
         assert potus in [potus_seq[3], potus_seq[0]]
 
 
+
 def test_modify(mi):
-    print(mi.get('assumed_ofc_at', 48))
     mi.modify('last_name', 'Obama', 'Hussain')
     assert mi.get('assumed_ofc_at', 48)[0].last_name == 'Hussain'
     assert mi.get('first_name', 'Barack')[0].last_name == 'Hussain'

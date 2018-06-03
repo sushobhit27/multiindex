@@ -54,8 +54,16 @@ class MultiIndexContainer(object):
     def modify_index(self, index, value):
         raise NotImplementedError
 
+
     def get_index(self, index):
-        raise NotImplementedError
+        assert index in self.indexes.keys(), 'Unknown index "{}" is provided'.format(index)
+        return self.indexes[index]
 
     def __str__(self):
         pass
+
+    def to_string_by(self, index):
+        assert index in self.indexes.keys(), 'Unknown index "{}" is provided'.format(index)
+        index_val = self.get_index(index)
+        for k, v in index_val:
+            print(k, v)

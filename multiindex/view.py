@@ -2,6 +2,17 @@ from abc import ABCMeta, abstractmethod
 from collections import OrderedDict, defaultdict
 
 
+class ViewIterator(object):
+    def __init__(self, view_to_iterate):
+        self.iterator = iter(view_to_iterate)
+
+    def __iter__(self):
+        return self
+
+    def __next__(self):
+        return next(self.iterator)
+
+
 class View(object, metaclass=ABCMeta):
     @abstractmethod
     def insert(self, k, v):
@@ -18,6 +29,9 @@ class View(object, metaclass=ABCMeta):
     @abstractmethod
     def remove(self, k):
         pass
+
+    def __iter__(self):
+        return ViewIterator(self._container.items())
 
 
 class Unique(View, metaclass=ABCMeta):

@@ -2,6 +2,17 @@ from abc import ABCMeta
 from . import view
 
 
+class IndexIterator(object):
+    def __init__(self, index_to_iterate):
+        self.iterator = iter(index_to_iterate)
+
+    def __iter__(self):
+        return self
+
+    def __next__(self):
+        return next(self.iterator)
+
+
 class IndexedBy(object, metaclass=ABCMeta):
     def insert(self, obj):
         index_val = getattr(obj, self.index_name)
@@ -24,6 +35,9 @@ class IndexedBy(object, metaclass=ABCMeta):
 
     def can_be_removed(self, visitor, obj):
         return visitor.visit(self, obj)
+
+    def __iter__(self):
+        return IndexIterator(self.view)
 
 
 class HashedUnique(IndexedBy):
