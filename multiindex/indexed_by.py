@@ -13,7 +13,8 @@ class IndexIterator(object):
         return next(self.iterator)
 
 
-class IndexedBy(object, metaclass=ABCMeta):
+class IndexedBy(object):
+    __metaclass__ = ABCMeta
     def insert(self, obj):
         index_val = getattr(obj, self.index_name)
         self.view.insert(index_val, obj)

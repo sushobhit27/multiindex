@@ -13,7 +13,8 @@ class ViewIterator(object):
         return next(self.iterator)
 
 
-class View(object, metaclass=ABCMeta):
+class View(object):
+    __metaclass__ = ABCMeta
     @abstractmethod
     def insert(self, k, v):
         pass
@@ -34,7 +35,8 @@ class View(object, metaclass=ABCMeta):
         return ViewIterator(self._container.items())
 
 
-class Unique(View, metaclass=ABCMeta):
+class Unique(View):
+    __metaclass__ = ABCMeta
     def insert(self, k, v):
         self._container[k] = v
 
