@@ -3,7 +3,8 @@ from abc import abstractmethod, ABCMeta
 from .indexed_by import (HashedUnique, OrderedUnique, HashedNonUnique)
 
 
-class MultiIndexVisitor(object, metaclass=ABCMeta):
+class MultiIndexVisitor(object):
+    __metaclass__ = ABCMeta
     @abstractmethod
     def visit(self):
         pass
