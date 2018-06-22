@@ -62,6 +62,7 @@ Currently this package can be installed using setup.py only.
 TODO
 ------------------------
 - [] Make package pip installable.
-- [] Ordered index is based on OrderedDict, therefore order indexes based on the insertion order which is not quite useful and is not same as
-     boost::ordered_unique/ ordered_non_unique. To have similar behaviour, SortedDict will be required, which can be used from sortedcontainers package.
+- [] Ordered index is based on OrderedDict, therefore order indexes based on the insertion order which is not quite 
+     useful and is not same as boost::ordered_unique/ ordered_non_unique. To have similar behaviour, SortedDict 
+     will be required, which can be used from sortedcontainers package.
 
