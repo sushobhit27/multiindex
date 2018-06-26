@@ -12,10 +12,13 @@ class MultiIndexContainer(object):
     def __init__(self, *indexes):
         self.indexes = {index.index_name: index for index in indexes}
 
-    def insert(self, obj):
+    def insert(self, obj, overwrite=False):
+        # add overwrite flag to skip index property checking.
+        # although this should be handled in modify function, but for that
+        # implementation will have to be changed.
         # insert must insert the obj only when every index property is satisfied.
         inserter = MultiIndexInserter()
-        can_be_inserted = [index.can_be_inserted(inserter, obj) for index in self.indexes.values()]
+        can_be_inserted = [index.can_be_inserted(inserter, obj, overwrite) for index in self.indexes.values()]
         if all(can_be_inserted):
             [index.insert(obj) for index in self.indexes.values()]
 

@@ -28,8 +28,8 @@ class IndexedBy(object):
     def remove(self, value):
         return self.view.remove(value)
 
-    def can_be_inserted(self, visitor, obj):
-        return visitor.visit(self, obj)
+    def can_be_inserted(self, visitor, obj, overwrite):
+        return visitor.visit(self, obj, overwrite)
 
     def can_be_modified(self, visitor, obj):
         return visitor.visit(self, obj)

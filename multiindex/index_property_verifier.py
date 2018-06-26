@@ -11,9 +11,12 @@ class MultiIndexVisitor(object):
 
 
 class MultiIndexInserter(object):
-    def visit(self, index, obj):
+    def visit(self, index, obj, overwrite):
         index_val = getattr(obj, index.index_name)
         if isinstance(index, (OrderedUnique, HashedUnique)):
+            # don't check if overwrite
+            if overwrite:
+                return True
             # not unique, don't insert
             if index.get(index_val) is not None:
                 return False
