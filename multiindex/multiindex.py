@@ -41,6 +41,15 @@ class MultiIndexContainer(object):
             [index.modify(getattr(old_obj, index.index_name), obj)
              for index in self.indexes.values()]
 
+    def replace(self, indexed_by, index_value, new_obj):
+        modifier = MultiIndexModifier()
+        can_be_modified = [index.can_be_modified(modifier, new_obj, overwrite=True) for index in self.indexes.values()
+                           if index.index_name == indexed_by]
+        if all(can_be_modified):
+            old_obj = self.get(indexed_by, index_value)
+            [index.remove(getattr(old_obj, index.index_name)) for index in self.indexes.values()]
+            [index.insert(new_obj) for index in self.indexes.values()]
+
     def remove(self, indexed_by, value):
         # insert must only insert the obj only when every index property is satisfied.
         index = self.indexes.get(indexed_by)

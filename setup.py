@@ -1,8 +1,9 @@
-from distutils.core import setup
+from setuptools import setup
+
 setup(
   name = 'multiindex',
   packages = ['multiindex'],
-  version = '0.1.0',
+  version = '0.2.0',
   description = 'Container similar to boost multi index',
   author = 'Sushobhit',
   author_email = 'sushobhitsolanki@gmail.com',
