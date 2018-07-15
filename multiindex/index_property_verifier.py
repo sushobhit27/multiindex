@@ -24,11 +24,8 @@ class MultiIndexInserter(object):
 
 
 class MultiIndexModifier(object):
-    def visit(self, index, obj, overwrite):
+    def visit(self, index, obj):
         if isinstance(index, (OrderedUnique, HashedUnique)):
-            # don't check if overwrite
-            if overwrite:
-                return True
             # not unique, don't insert
             new_index_val = getattr(obj, index.index_name)
             if index.get(new_index_val):

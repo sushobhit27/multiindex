@@ -31,8 +31,8 @@ class IndexedBy(object):
     def can_be_inserted(self, visitor, obj, overwrite):
         return visitor.visit(self, obj, overwrite)
 
-    def can_be_modified(self, visitor, obj, overwrite):
-        return visitor.visit(self, obj, overwrite)
+    def can_be_modified(self, visitor, obj):
+        return visitor.visit(self, obj)
 
     def can_be_removed(self, visitor, obj):
         return visitor.visit(self, obj)
