@@ -1,4 +1,8 @@
 import copy
+import sys
+import inspect
+
+from functools import partialmethod, partial
 
 from .index_property_verifier import (MultiIndexInserter,
                                       MultiIndexModifier,
@@ -11,6 +15,9 @@ from .indexed_by import (HashedUnique,
 class MultiIndexContainer(object):
     def __init__(self, *indexes):
         self.indexes = {index.index_name: index for index in indexes}
+
+        for index in self.indexes:
+            setattr(self, 'get_by_' + index, partial(self.get, index))
 
     def insert(self, obj, overwrite=False):
         # add overwrite flag to skip index property checking.
