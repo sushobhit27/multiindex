@@ -67,11 +67,10 @@ Above will generate following output:
 ------------------------
 Installation
 ------------------------
-Currently this package can be installed using setup.py only.
 
 .. code-block::
 
-  python setup.py install
+  pip install multiindex
 
 ------------------------
 TODO
