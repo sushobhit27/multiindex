@@ -48,6 +48,21 @@ Above will generate following output:
     1234,Bret Hart,5678,HR
     1237,Triple H,937261,HR
 
+In addition to get API, there is alternate interface to get the object from the multiindex container, using
+get_by_(index_name), e.g check below code:
+
+.. code-block:: python
+
+    print(mi.get_by_emp_id(1234).first_name)
+    print(mi.get_by_first_name('Shawn').emp_id)
+    print(mi.get_by_last_name('Hart').first_name)
+
+Above will generate following output:
+.. code-block::
+
+    Shawn
+    1234
+    Bret
 
 ------------------------
 Installation
