@@ -75,10 +75,10 @@ Installation
 ------------------------
 TODO
 ------------------------
-- [] Ordered index is based on OrderedDict, therefore order indexes based on the insertion order which is not quite 
-     useful and is not same as boost::ordered_unique/ ordered_non_unique. To have similar behaviour, SortedDict 
-     will be required, which can be used from sortedcontainers package.
-- [] Make package pickable.
+- [ ] Ordered index is based on OrderedDict, therefore order indexes based on the insertion order which is not quite 
+      useful and is not same as boost::ordered_unique/ ordered_non_unique. To have similar behaviour, SortedDict 
+      will be required, which can be used from sortedcontainers package.
+- [ ] Make package pickable.
 - [ ] Change test cases to property based test cases, most probably by using hypothesis.
 
 ------------------------
