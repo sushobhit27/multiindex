@@ -79,3 +79,11 @@ TODO
      useful and is not same as boost::ordered_unique/ ordered_non_unique. To have similar behaviour, SortedDict 
      will be required, which can be used from sortedcontainers package.
 - [] Make package pickable.
+- [ ] Change test cases to property based test cases, most probably by using hypothesis.
+
+------------------------
+References
+------------------------
+- https://www.boost.org/doc/libs/1_64_0/libs/multi_index/doc/index.htm://www.boost.org/doc/libs/1_64_0/libs/multi_index/doc/index.html
+- http://www.drdobbs.com/the-boost-multi-index-containers-library/184401843
+- http://david-grs.github.io/why_boost_multi_index_container-part1/
