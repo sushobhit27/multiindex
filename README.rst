@@ -58,6 +58,7 @@ get_by_(index_name), e.g check below code:
     print(mi.get_by_last_name('Hart').first_name)
 
 Above will generate following output:
+
 .. code-block::
 
     Shawn
