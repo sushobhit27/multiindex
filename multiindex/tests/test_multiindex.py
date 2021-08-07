@@ -55,6 +55,7 @@ def test_insert_overwrite(mi, emp_seq):
     mi.insert(Employee('Razor', 'Topaz', 8732), overwrite=True)
     assert mi.get('emp_id', 8732).last_name == 'Topaz'
     assert mi.get('first_name', 'Razor').emp_id == 8732
+    mi.insert(emp_seq[0], overwrite=True)
 
 
 def test_modify(mi):
