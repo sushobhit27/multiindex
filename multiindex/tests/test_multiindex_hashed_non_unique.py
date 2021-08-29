@@ -13,7 +13,7 @@ class Potus(object):
         return '{} {}, {}'.format(self.first_name, self.last_name, self.assumed_ofc_at)
 
 
-@pytest.fixture(scope='session')
+@pytest.fixture(scope='function')
 def potus_seq():
     seq = [Potus('George', 'Washington', 57),
            Potus('Thomas', 'Jefferson', 58),
@@ -25,7 +25,7 @@ def potus_seq():
     return seq
 
 
-@pytest.fixture(scope='session')
+@pytest.fixture(scope='function')
 def mi(potus_seq):
     mi = MultiIndexContainer(HashedNonUnique('first_name'),
                              HashedNonUnique('last_name'),
