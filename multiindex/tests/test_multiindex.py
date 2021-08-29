@@ -63,11 +63,12 @@ def test_modify(mi):
     assert mi.get('emp_id', 666).last_name == 'Austin'
     assert mi.get('first_name', 'Steve').emp_id == 666
     assert mi.get('last_name', 'Austin').emp_id == 666
+    mi.modify('emp_id', 666, 786)
 
 
 def test_remove(mi):
-    mi.remove('emp_id', 666)
-    assert mi.get('emp_id', 666) is None
+    mi.remove('emp_id', 786)
+    assert mi.get('emp_id', 786) is None
 
 
 def test_get_by(mi):
