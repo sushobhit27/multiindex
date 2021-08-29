@@ -67,8 +67,8 @@ def test_modify(mi):
 
 
 def test_remove(mi):
-    mi.remove('emp_id', 666)
-    assert mi.get('emp_id', 666) is None
+    mi.remove('emp_id', 786)
+    assert mi.get('emp_id', 786) is None
 
 
 def test_get_by(mi):
